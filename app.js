@@ -863,8 +863,6 @@ for (var key in object) {
 
 // -===================Practice from notion concepts ===============
 
-
-
 // function test() {
 //   const a = (b = 123);
 // }
@@ -1022,3 +1020,19 @@ clonedPerson.age = 23;
 
 console.log(clonedPerson);
 console.log(person);
+
+const any = {
+  name: "Abb",
+  study: {
+    course: "mechanical",
+    duration: 30,
+  },
+  gender: "male",
+};
+
+// const clonedAny = Object.assign({}, any);
+const clonedAny = { ...any, study: { ...any.study } };
+console.log(clonedAny);
+console.log(any);
+clonedAny.gender = "female";
+clonedAny.study.duration = 10000;
