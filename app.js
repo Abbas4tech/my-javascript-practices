@@ -965,15 +965,17 @@ console.log(num2(), num2());
 
 const printBtn = document.getElementById("btn");
 
-const printName = (name) => {
-  console.log(name);
-  alert(`Name of user is ${name}`);
+const printName = (num1, num2) => {
+  console.log(num1, num2);
+  let result = num1 + num2
+  alert(`Result : ${num1} + ${num2} = ${result}`);
 };
 
 const nameData = () => {
   debugger;
-  let message = prompt("What is your Name ?", "Abbas");
-  printName(message);
+  let message1 = parseInt(prompt("Enter first number?", ""));
+  let message2 = parseInt(prompt("Enter second number?", ""));
+  printName(message1, message2);
 };
 
 printBtn.addEventListener("click", nameData);
