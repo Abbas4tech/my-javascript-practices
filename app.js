@@ -967,7 +967,7 @@ const printBtn = document.getElementById("btn");
 
 const printName = (num1, num2) => {
   console.log(num1, num2);
-  let result = num1 + num2
+  let result = num1 + num2;
   alert(`Result : ${num1} + ${num2} = ${result}`);
 };
 
@@ -1038,3 +1038,21 @@ console.log(clonedAny);
 console.log(any);
 clonedAny.gender = "female";
 clonedAny.study.duration = 10000;
+
+// ===================Prime number====================
+
+function showPrimes(n) {
+  for (let i = 2; i < n; i++) {
+    if (!isPrime(i)) continue;
+
+    alert(i); // a prime
+  }
+}
+
+function isPrime(n) {
+  for (let i = 2; i < n; i++) {
+    if (n % i == 0) return false;
+  }
+  return true;
+}
+showPrimes(5);
