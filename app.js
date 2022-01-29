@@ -1118,3 +1118,41 @@ showName("Julius", "Caesar");
 // shows: 1, Ilya, undefined (no second argument)
 showName("Ilya");
 
+// ===================bind =====================
+
+const visitor = {
+  name: "Abbas",
+  role: "visitor",
+  resignYear: 2020,
+};
+
+const print = function () {
+  console.log(
+    this.name +
+      " " +
+      "worked here as" +
+      " " +
+      this.role +
+      " " +
+      "and resign in" +
+      " " +
+      this.resignYear
+  );
+};
+
+let printVisitor = print.bind(visitor);
+printVisitor();
+
+// ========================promisses=====================
+
+const isVisitorVisited = new Promise((resolve, reject) => {
+  let userVisited = false;
+
+  userVisited ? resolve("visitor is visited") : reject("visitor didnt come!");
+});
+
+isVisitorVisited
+  .then((fromResolve) => console.log(fromResolve))
+  .catch((fromReject) => console.log(fromReject));
+
+
