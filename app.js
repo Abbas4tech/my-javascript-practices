@@ -860,3 +860,165 @@ for (var key in object) {
     console.log(key + " -> " + object[key]); // k1 -> value1 ...
   }
 }
+
+// -===================Practice from notion concepts ===============
+
+
+
+// function test() {
+//   const a = (b = 123);
+// }
+// test();
+// console.log(typeof a, typeof b);
+
+// const user = {
+//   name: "nasir",
+//   role: "admin",
+//   address: {
+//     street: "alpha",
+//   },
+// };
+
+// const copyUser = { ...user };
+// copyUser.name = "bar";
+// copyUser.address.street = "beta";
+
+// function addItem(item, items = []) {
+//   items.push(item);
+//   console.log(items);
+// }
+// addItem("lorem");
+// addItem("ipsum");
+
+// const res = "a1122".split("").map(Number);
+// .filter(Boolean);
+//   .reduce((a, b) => a + b);
+// console.log(res);
+
+// console.log([..."foo bar"].map((charc) => charc.toLowerCase()).join("_"));
+
+// function sumOfArray(array) {
+//   return array.reduce((a, b) => a + b);
+// }
+// console.log(sumOfArray([4, -3, 1, 5]));
+// console.log(sumOfArray([]));
+// console.log(sumOfArray([-2]));
+
+// const obj = {
+//   name: "dajjal",
+//   address: {},
+// };
+// obj.address.street = "noway";
+// console.log(obj);
+// obj?.address.street;
+// obj.address?.street;
+// obj?.address?.street;
+
+// const obj = {
+//   a: 1,
+//   b: 3,
+//   a: -1,
+// };
+// console.log(Object.values(obj));
+
+// const falana = {
+//   name: "handve",
+//   printName() {
+//     console.log(this.name);
+//   },
+// };
+// const method = falana.printName;
+// method();
+
+// let a = 1,
+//   b = 2,
+//   c = 3;
+
+// [a, b, c] = [b, a];
+
+// console.log(a, b, c);
+
+// const obj1 = { foo: 2, bar: 4 };
+
+// const entries = Object.entries(obj1)
+//   .map((el) => [el[0], el[1] * 2])
+//   .map((el) => [el[1], el[0] + 1]);
+
+// console.log(Object.fromEntries(entries));
+
+// let count = 0;
+
+// console.log(count++);
+// console.log(count);
+
+const countFunc = () => {
+  let count = 0;
+  return function () {
+    return count++;
+  };
+};
+
+const num1 = countFunc();
+
+const num2 = countFunc();
+
+console.log(num1(), num1());
+console.log(num2(), num2());
+
+const printBtn = document.getElementById("btn");
+
+const printName = (name) => {
+  console.log(name);
+  alert(`Name of user is ${name}`);
+};
+
+const nameData = () => {
+  debugger;
+  let message = prompt("What is your Name ?", "Abbas");
+  printName(message);
+};
+
+printBtn.addEventListener("click", nameData);
+
+const fruits = ["apple", "banana", "sabun"];
+
+// for (let fruit of fruits) {
+//   console.log(fruit);
+//   alert(fruit);
+// }
+
+// for (let key in fruits) {
+//   alert(fruits[key]);
+// }
+
+const person = {
+  name: "Abbas",
+  isAdmin: true,
+  age: 22,
+};
+
+// for (let key in person) {
+//   alert(key);
+//   alert(person[key]);
+// }
+
+let clonedPerson = {};
+
+// ================OBJECT ASSIGN TESTING==============
+
+// Object.assign(clonedPerson, person);
+
+// clonedPerson.name = "BAba";
+// clonedPerson.age = 23;
+
+// ==============================
+
+for (let key in person) {
+  clonedPerson[key] = person[key];
+}
+delete clonedPerson.isAdmin;
+clonedPerson.name = "BAba";
+clonedPerson.age = 23;
+
+console.log(clonedPerson);
+console.log(person);
