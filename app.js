@@ -1056,3 +1056,45 @@ function isPrime(n) {
   return true;
 }
 showPrimes(5);
+
+// ==========================counter==========================
+function sayHi() {
+  console.log("Hi");
+
+  // let's count how many times we run
+  sayHi.counter++;
+}
+sayHi.counter = 0; // initial value
+
+sayHi(); // Hi
+sayHi(); // Hi
+
+console.log(`Called ${sayHi.counter} times`); // Called 2 times
+
+// ==========================rest perameter=====================
+
+function sumAll(...args) {
+  // args is the name for the array
+  console.log(args);
+  let sum = 0;
+
+  for (let arg of args) sum += arg;
+
+  return sum;
+}
+
+console.log(sumAll(1)); // 1
+console.log(sumAll(1, 2)); // 3
+console.log(sumAll(1, 2, 3, 4)); // 6
+
+function showName(firstName, lastName, ...titles) {
+  console.log(firstName + " " + lastName); // Julius Caesar
+
+  // the rest go into titles array
+  // i.e. titles = ["Consul", "Imperator"]
+  console.log(titles[0]); // Consul
+  console.log(titles[1]); // Imperator
+  console.log(titles.length); // 2
+}
+
+showName("Julius", "Caesar", "Consul", "Abbas", "Imperator");
