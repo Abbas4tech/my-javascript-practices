@@ -1158,3 +1158,29 @@ const isVisitorVisited = async () => {
 };
 
 isVisitorVisited();
+
+//=====================object destructuring ============================
+
+const obj = {
+  name: "abbas",
+  address: "kalyan",
+  age: 22,
+  info: {
+    gender: "male",
+  },
+};
+
+const { name } = obj;
+console.log(name);
+
+const {
+  info: { gender },
+} = obj;
+console.log(gender);
+
+for (let key in obj) {
+  console.log(key);
+}
+for (let [key, value] of Object.entries(obj)) {
+  console.log(`${key} : ${value}`);
+}
