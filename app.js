@@ -1145,14 +1145,16 @@ printVisitor();
 
 // ========================promisses=====================
 
-const isVisitorVisited = new Promise((resolve, reject) => {
-  let userVisited = false;
+const isVisitorVisited = async () => {
+  try {
+    const data = await fetch("https://jseholder.typiccom/todos");
+    console.log(data);
+    const users = data.json();
+    console.log(users);
+    console.log("executed");
+  } catch ({ message }) {
+    console.log(message);
+  }
+};
 
-  userVisited ? resolve("visitor is visited") : reject("visitor didnt come!");
-});
-
-isVisitorVisited
-  .then((fromResolve) => console.log(fromResolve))
-  .catch((fromReject) => console.log(fromReject));
-
-
+isVisitorVisited();
