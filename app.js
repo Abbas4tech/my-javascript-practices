@@ -1238,3 +1238,48 @@ for (let key in emp2) {
   }
 }
 console.log(result);
+
+//================= sums of array elements
+
+const sum = ([a, b]) => {
+  if (a > b) {
+    [a, b] = [b, a];
+  }
+  const arr = [];
+  for (let i = a; i <= b; i++) {
+    arr.push(i);
+  }
+  const sums = arr.reduce((pre, cur) => pre + cur);
+  return sums;
+};
+
+console.log(sum([4, 1]));
+
+//================= charc count================
+
+const str = "hello 1 js 2 es5, es6, es7 react ninjas";
+
+const charcCount = (str) => {
+  console.log(str);
+
+  let charcArray = str
+    .split("")
+    .filter((charc) => charc !== " " && charc !== "," && isNaN(+charc));
+  console.log(charcArray);
+
+  const entriesOfCharc = charcArray.reduce((preVal, currval) => {
+    preVal[currval] = preVal[currval] ? preVal[currval] + 1 : 1;
+    return preVal;
+  }, {});
+  return entriesOfCharc;
+};
+console.log(charcCount(str));
+
+//===============cookie problem===================
+
+const cookie = (cookies) => {
+  const maxCookie = Math.max(...cookies);
+  return cookies.filter((people) => people === maxCookie).length;
+};
+
+console.log(cookie([4, 5, 6, 6, 6]));
