@@ -1184,3 +1184,57 @@ for (let key in obj) {
 for (let [key, value] of Object.entries(obj)) {
   console.log(`${key} : ${value}`);
 }
+
+const emp1 = {
+  id: 1,
+  name: "test1",
+  address: {
+    city: "Mumbai",
+    street: {
+      name: "LoL street",
+      houseNo: 25,
+    },
+  },
+};
+
+const emp2 = {
+  id: 1,
+  name: "test1",
+  address: {
+    city: "Mumbai",
+    street: {
+      name: "LoL street",
+      houseNo: 25,
+    },
+  },
+};
+
+let result = false;
+for (let key in emp2) {
+  if (emp1.hasOwnProperty(key)) {
+    if (typeof emp2[key] === "object") {
+      for (let keys in emp2[key]) {
+        if (typeof emp2[key][keys] === "object") {
+          for (let nestedKey in emp2[key][keys]) {
+            if (emp1[key][keys][nestedKey] === emp2[key][keys][nestedKey]) {
+              result = true;
+            } else {
+              result = false;
+            }
+          }
+        } else if (emp2[key][keys] === emp1[key][keys]) {
+          result = true;
+        } else {
+          result = false;
+        }
+      }
+    } else if (emp1[key] === emp2[key]) {
+      result = true;
+    } else {
+      result = false;
+    }
+  } else {
+    result = false;
+  }
+}
+console.log(result);
