@@ -1283,3 +1283,15 @@ const cookie = (cookies) => {
 };
 
 console.log(cookie([4, 5, 6, 6, 6]));
+
+//====================type Checker==============
+
+const checkMe = (perameter) => {
+  let result;
+  Array.isArray(perameter)
+    ? (result = "Input is Array")
+    : (result = `Input is ${typeof perameter}`);
+  return result;
+};
+
+console.log(checkMe([1, 2]));
