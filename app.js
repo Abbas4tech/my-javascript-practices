@@ -1295,3 +1295,148 @@ const checkMe = (perameter) => {
 };
 
 console.log(checkMe([1, 2]));
+
+const numbers = [];
+for (let i = 1; i <= 200; i++) {
+  numbers.push(i);
+}
+
+const minQuantiy = (arr) =>
+  arr.filter((num) => num === Math.min(...arr)).length;
+console.log(minQuantiy([1, 1, 1, 1, 3, 3, 4, 5, 6, 6, 7]));
+
+const removeDuplicate = (arr) =>
+  arr.filter((num, idx, arr) => arr.indexOf(num) === idx);
+
+console.log(removeDuplicate([1, 2, 1, 3, 2, 1, 4, 3, 1, 4, 4]));
+
+const placedAt = (arr, numTobePlace) => {
+  if (arr.includes(numTobePlace)) {
+    const at = arr
+      .reduce(
+        (pre, cur, idx) => pre.concat(cur === numTobePlace ? idx + 1 : []),
+        []
+      )
+      .join(",");
+    console.info(`Number ${numTobePlace} is present at ${at}`);
+  } else
+    console.log(`Supplied number ${numTobePlace} is not present in array!`);
+};
+placedAt([1, 2, 3, 43, 2, 1, 23, 4, 1], 4);
+
+const lengthOfLargestName = (arr) => {
+  let maxChar = "";
+  return arr.reduce((pre, cur) => {
+    if (cur.length > maxChar.length) {
+      maxChar = cur;
+      return maxChar.length;
+    } else return pre;
+  }, 0);
+};
+
+console.log(lengthOfLargestName(["Abbas", "Nadeem", "Bilal"]));
+
+const charcStrCount = (str, alp) => {
+  let count = 0;
+  str
+    .trim()
+    .toLowerCase()
+    .split("")
+    .forEach((charc) => (charc === alp ? count++ : count));
+  return count;
+};
+console.log(charcStrCount("Abbassss", "s"));
+
+const shuffledArray = (arr) => {
+  return arr
+    .map((num) => ({ num, _sortKey: Math.random() }))
+    .sort((a, b) => a._sortKey - b._sortKey)
+    .map(({ num }) => num);
+};
+
+let count = 10;
+while (count) {
+  console.log(shuffledArray([1, 2, 3, 4, 5, 6, 7, 8, 9]));
+  count--;
+}
+
+const reverser = (str) =>
+  str
+    .split(" ")
+    .filter((e) => e)
+    .map((word) => word.split("").reverse().join(""))
+    .reverse()
+    .join(" ");
+
+console.log(reverser("  my   name    is abbas    "));
+
+// const revString = (str) => {
+//   const arr = str.split(" ");
+//   const reverseArr = [];
+//   arr.forEach((elem) => {
+//     const newArr = elem.split("");
+//     reverseArr.push(newArr.reverse().join(""));
+//   });
+//   return reverseArr.reverse().join(" ");
+// };
+// console.log(revString("my name is samar"));
+
+// const revString = (str) => {
+//   const arr = str.split(" ");
+//   console.log(arr);
+//   const reverseArr = [];
+//   arr.forEach((elem) => {
+//     if (elem) {
+//       const newArr = elem.split("");
+//       reverseArr.push(newArr.reverse().join(""));
+//     }
+//   });
+//   return reverseArr.reverse().join(" ");
+// };
+// console.log(revString("my               name is    samar"));
+
+const charcCounts = (str) =>
+  str
+    .toLowerCase()
+    .split(" ")
+    .filter(Boolean)
+    .join("")
+    .split("")
+    .reduce((pre, cur) => {
+      pre[cur] = pre[cur] ? pre[cur] + 1 : 1;
+      return pre;
+    }, {});
+
+console.log(charcCounts("Mmmmmmmmmmmmqw"));
+// ---- Alternate Solution without using Reduce -----------//
+
+const withoutReduce = (str) => {
+  const charcMap = {};
+  for (let char of str.toLowerCase().split("")) {
+    charcMap[char] ? charcMap[char]++ : (charcMap[char] = 1);
+  }
+  return charcMap;
+};
+console.log(withoutReduce("Abbas"));
+
+// Polyfill for Math.max
+
+const myMax = (...args) =>
+  args.reduce((pre, cur) => (cur > pre ? cur : pre), 0);
+
+console.log(myMax(...numbers));
+
+const printMyName = (name, length) =>
+  Array.from({ length }, () => name).forEach((e) => console.log(e));
+
+printMyName("Abbas", 10);
+
+const printer = (word, count) =>
+  Array(count)
+    .fill(word)
+    .forEach((e) => console.log(e));
+printer("Abbas", 1);
+
+Array(50)
+  .fill("Abbas")
+  .forEach((e) => console.log(e));
