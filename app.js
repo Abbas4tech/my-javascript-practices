@@ -1440,3 +1440,31 @@ printer("Abbas", 1);
 Array(50)
   .fill("Abbas")
   .forEach((e) => console.log(e));
+
+const input = [
+  {
+    name: "ginger",
+    type: "vegetable",
+  },
+  {
+    name: "apple",
+    type: "fruit",
+  },
+  {
+    name: "bhindi",
+    type: "vegetable",
+  },
+];
+
+Array.prototype.groupBy = function (callback) {
+  const output = {};
+  this.forEach((e, i) => {
+    const groupWith = callback(this[i]);
+    output.hasOwnProperty(groupWith)
+      ? output[groupWith].push(e)
+      : (output[groupWith] = [e]);
+  });
+  return output;
+};
+
+console.log(input.groupBy(({ type }) => type));
