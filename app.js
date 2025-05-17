@@ -1796,3 +1796,18 @@ console.log(
     []
   )
 );
+
+const withDebounce = (fn, delay) => {
+  let timerId;
+  return function (...args) {
+    clearTimeout(timerId);
+    timerId = setTimeout(() => {
+      fn(...args);
+    }, delay);
+  };
+};
+
+document.getElementById("input-field").addEventListener(
+  "input",
+  withDebounce((event) => console.log(event.target.value), 500)
+);
